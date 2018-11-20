@@ -11,10 +11,10 @@ var request    = require('request');
   }
   else if (typeof user_name === 'undefined'){
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"
-  } else {
+  } 
+  else {
     var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name
   }  
-
 
     method: 'post',
     body: {

@@ -33,8 +33,6 @@ app.post('/karma', function (req, res) {
   // If positive count or negative count is null, then query the total karma points
    if (points != 0 || points != '0'){
     //add/delete points
-    console.log("my name is", addName)
-    console.log("my point is", points)
    // Since there are two simultenous DB transactions here,
    // use async
     async function addKarma() {

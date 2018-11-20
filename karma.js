@@ -16,8 +16,6 @@ var request    = require('request');
   }  
 
 
- // let slackWebhook = 'https://hooks.slack.com/services/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'
-  let options = {
     method: 'post',
     body: {
       response_type: "in_channel",

@@ -1,3 +1,4 @@
+//This is the entry point for the app 
 let express     = require('express');
 let bodyParser  = require('body-parser');
 let request     = require('request');

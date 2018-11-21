@@ -12,7 +12,10 @@ let port        = process.env.PORT || 8069;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/karma', function (req, res) {
-
+  //authenticate first 
+  if (req.body.token !== process.env.TOKEN){
+   return res.status(401).send({ auth: false, message: 'No token or wrong token provided.' });
+  }
   res.send("_checking_ _karma_..")
   console.log("WRITING KARMA POINTS:")
   let karma     = req.body.text

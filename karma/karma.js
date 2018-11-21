@@ -13,7 +13,7 @@ var request    = require('request');
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"
   } 
   else {
-    var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name
+    var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name + " :high-five:"
   }  
 
     method: 'post',

@@ -6,4 +6,4 @@
 5. karma.js writes to Slack
 6. You need a .env file to read/write to the database
 7. To run: npm install, node app.js
-8. To run it locally, you need to edit app.js, and add your text that would normally come from slack in the karma variable, start the server, and use HTTP POST to the localhost:3306/karma 
+8. To run it locally, you need to edit app.js, and add your text that would normally come from slack in the karma variable, start the server, and use HTTP POST to the localhost:8069/karma 

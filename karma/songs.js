@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/karma', function (req, res) {
   //authenticate first 
   if (req.body.token !== process.env.TOKEN){
-   return res.status(401).send({ auth: false, message: 'No token or wrong token provided.' });
+    return res.status(401).send({ auth: false, message: 'No token or wrong token provided.' });
   } 
   else {
     res.send("_checking_ _karma_..")
@@ -35,22 +35,22 @@ app.post('/karma', function (req, res) {
     // Write to slack
     // always returns a karma point
     // If positive count or negative count is null, then query the total karma points
-     if (points != 0 || points != '0'){
+    if (points != 0 || points != '0'){
       //add/delete points
-     // Since there are two simultenous DB transactions here,
-     // use async
+      // Since there are two simultenous DB transactions here,
+      // use async
       async function addKarma() {
         const delay     = ms => new Promise(resolve => setTimeout(resolve, ms));
         let result      = await querySongs(addName, points, user_name)
         //let myNewResult = await result
         await delay(200)
         await querySongs(addName,0,user_name, res_url)
-    }
-    addKarma();
+      }
+      addKarma();
     }
     else if (req.body.text.indexOf('help') >= 0)  {
       // If help is asked, no need to call any other method, or do a calc
-     this.karma('thisKarma','help', 'help', res_url);
+      this.karma('thisKarma','help', 'help', res_url);
     }
     else if (posCount > 4 || negCount > 4){
       // don't let users abuse this

@@ -15,6 +15,9 @@ var request    = require('request');
   else if (typeof user_name === 'undefined'){
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"
   } 
+  else if (value == 'null'){
+    var  sendText = text + " doesn't have any Karma points :sob:"
+  }   
   else {
     var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name + " " + emoji
   }  

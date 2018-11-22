@@ -1,7 +1,7 @@
 var request    = require('request');
 //This mehtod is responsible for reading and writing from Slack
 
-  karma = async function(value, text, user_name, res_url){
+  karma = async function(value, text, user_name, res_url, emoji){
 
   if (await text.indexOf('help') >= 0){
     var sendText = "```--- HELP TOPICS --- \n" +
@@ -13,7 +13,7 @@ var request    = require('request');
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"
   } 
   else {
-    var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name + " :high-five:"
+    var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name + " " + emoji
   }  
 
     method: 'post',

@@ -61,6 +61,7 @@ app.post('/karma', function (req, res) {
     }
     else if (posCount > 4 || negCount > 4){
       // don't let users abuse this
+      this.karma('thisKarma','not_allowed', 'illegal_operation', res_url, emoji);
       console.log("More than 4 points of add or reduce is not allowed!")
     }
     else {

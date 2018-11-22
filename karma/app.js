@@ -36,22 +36,28 @@ app.post('/karma', function (req, res) {
     // Write to slack
     // always returns a karma point
     // If positive count or negative count is null, then query the total karma points
-    if (points != 0 || points != '0'){
+    if (points != 0 ){
       //add/delete points
       // Since there are two simultenous DB transactions here,
       // use async
+       if (points > 0) {
+           var emoji = ':thumbsup:'
+        } else {
+           var emoji = ':thumbsdown:'
+        }
+
       async function addKarma() {
         const delay     = ms => new Promise(resolve => setTimeout(resolve, ms));
         let result      = await querySongs(addName, points, user_name)
         //let myNewResult = await result
         await delay(200)
-        await querySongs(addName,0,user_name, res_url)
+        await querySongs(addName,0,user_name, res_url, emoji)
       }
       addKarma();
     }
     else if (req.body.text.indexOf('help') >= 0)  {
       // If help is asked, no need to call any other method, or do a calc
-      this.karma('thisKarma','help', 'help', res_url);
+      this.karma('thisKarma','help', 'help', res_url, emoji);
     }
     else if (posCount > 4 || negCount > 4){
       // don't let users abuse this
@@ -59,7 +65,7 @@ app.post('/karma', function (req, res) {
     }
     else {
       //If ++ or -- is not mentioned then it is useless to add/delete so simply return the value
-      querySongs(addName,0, undefined, res_url);
+      querySongs(addName,0, undefined, res_url, emoji);
     }
   }
 }) // close post method

@@ -36,7 +36,7 @@ app.post('/karma', function (req, res) {
     // Write to slack  
     // always returns a karma point
     // If positive count or negative count is null, then query the total karma points
-    if (points != 0 && (points <= 4 && points >= -4)) {
+    if (points != 0 && (Math.abs(points) <= 4) {
       //add/delete points
       // Since there are two simultenous DB transactions here,
       // use async

@@ -32,6 +32,8 @@ app.post('/karma', function (req, res) {
     console.log("MY NAME IS :"+ addName)
     let newDate   =  new Date().getTime();
     let date      = moment(newDate).format('dddd, MMMM Do, YYYY h:mm:ss A');
+    // Probably good to show the text typed before takign any actions
+    this.karma('thisKarma',karma, 'stdout', res_url, '');
     // write karma points, and get karma points
     // Write to slack  
     // always returns a karma point

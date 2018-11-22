@@ -1,0 +1,1 @@
+1. Get user_id and ensure user is not able to give him/her karma points.Probably need to use API for this, since user_name is deprecated.

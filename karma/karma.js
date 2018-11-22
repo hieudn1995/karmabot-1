@@ -9,6 +9,9 @@ var request    = require('request');
     "To see karma points, simply type /karma @user.\n" +
     "To ask for help, just type /karma help```"
   }
+  else if (await text.indexOf('not_allowed') >=0){
+    var sendText = "```--- NOT ALLOWED TO ADD/ DELETE MORE THAN 4 POINTS ---```"
+  } 
   else if (typeof user_name === 'undefined'){
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"
   } 

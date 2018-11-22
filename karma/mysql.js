@@ -4,7 +4,7 @@ let system    = require('system');
 let newKarma  = require('./karma')
 
 
-querySongs = function(userId, points, user_name, res_url) {
+querySongs = function(userId, points, user_name, res_url, emoji) {
   let Initialized = false;
   let con         = mysql.createConnection({
     multipleStatements: true,
@@ -34,7 +34,7 @@ querySongs = function(userId, points, user_name, res_url) {
         console.log(queryResult.total)
 
         //CALL SLACK FROM HERE -->
-        karma(queryResult.total, userId, user_name, res_url)
+        karma(queryResult.total, userId, user_name, res_url, emoji)
         con.end();
       });
     }

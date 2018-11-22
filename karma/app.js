@@ -41,7 +41,7 @@ app.post('/karma', function (req, res) {
       //add/delete points
       // Since there are two simultenous DB transactions here,
       // use async
-       if (points > 0 && points < 2) {
+       if (points > 0 && points <= 2) {
            var emoji = ':thumbsup:'
         }
        else if (points > 2){

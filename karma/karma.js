@@ -2,7 +2,6 @@ var request    = require('request');
 //This mehtod is responsible for reading and writing from Slack
 
   karma = async function(value, text, user_name, res_url, emoji){
- 
 
   if (await text.indexOf('help') >= 0){
     var sendText = "```--- HELP TOPICS --- \n" +

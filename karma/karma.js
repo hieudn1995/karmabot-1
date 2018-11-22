@@ -17,7 +17,11 @@ var request    = require('request');
   } 
   else if (value == 'null'){
     var  sendText = text + " doesn't have any Karma points :sob:"
-  }   
+  }
+  else if (text =="") {
+  var sendText = "_To_ _check/add/delete_ karma _points_, _you_ _must_ _use_ '@' _before_ _a_ _user's_ _name_\n" +
+  "Check the help section by typing */karma help*"
+  }  
   else {
     var sendText = text + "'s _karma_ has been updated to *"+ value + "* by " + user_name + " " + emoji
   }  

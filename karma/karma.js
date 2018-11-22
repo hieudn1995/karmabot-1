@@ -2,16 +2,14 @@ var request    = require('request');
 //This mehtod is responsible for reading and writing from Slack
 
   karma = async function(value, text, user_name, res_url, emoji){
+ 
 
   if (await text.indexOf('help') >= 0){
     var sendText = "```--- HELP TOPICS --- \n" +
     "To add or deduct karma, simply type /karma @user ++ (or --) where @user is the slack username.\n" +
     "To see karma points, simply type /karma @user.\n" +
     "To ask for help, just type /karma help```"
-  }
-  else if (await value.indexOf('karma') >=0){
-  var sendText = text
-  }   
+  } 
   else if (await text.indexOf('not_allowed') >=0){
     var sendText = "```--- NOT ALLOWED TO ADD/ DELETE MORE THAN 4 POINTS ---```"
   } 

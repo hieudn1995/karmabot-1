@@ -45,7 +45,7 @@ app.post('/karma', function (req, res) {
            var emoji = ':thumbsup:'
         }
        else if (points > 2){
-          var emoji = :clap:
+          var emoji = ':clap:'
         } 
        else {
            var emoji = ':thumbsdown:'

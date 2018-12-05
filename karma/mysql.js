@@ -1,9 +1,9 @@
 require('dotenv').config({path: `${__dirname}/.env`});
 const mysql = require('mysql');
-const system = require('system');
+// Const system = require('system');
 const newKarma = require('./karma');
 
-querySongs = function (userId, points, user_name, res_url, emoji) {
+const querySongs = (userId, points, user_name, res_url, emoji) => {
 	const Initialized = false;
 	const con = mysql.createConnection({
 		multipleStatements: true,
@@ -19,7 +19,7 @@ querySongs = function (userId, points, user_name, res_url, emoji) {
 		console.log('my userID is', userId);
 		console.log('my DBpoint is', points);
 		console.log('my host is', process.env.HOST);
-		if (points != 0 || points != '0') {
+		if (points !== 0 || points !== '0') {
 			const post = {name: userId, points};
 			con.query('INSERT INTO karma SET ?', post, (err, result) => {
 				if (err) {
@@ -36,7 +36,7 @@ querySongs = function (userId, points, user_name, res_url, emoji) {
 				console.log(queryResult.total);
 
 				// CALL SLACK FROM HERE -->
-				karma(queryResult.total, userId, user_name, res_url, emoji);
+				newKarma(queryResult.total, userId, user_name, res_url, emoji);
 				con.end();
 			});
 		}

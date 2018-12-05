@@ -24,8 +24,8 @@ app.post('/karma', function (req, res) {
     let res_url   = req.body.response_url
     let user_name = req.body.user_name
     let name      = /(?:@)[^+-\s]+/gm.exec(karma)|| '@help'
-    let posCount  = karma.split("+").length -1
-    let negCount  = karma.split("-").length -1
+    let posCount  = (karma.match(/\+/g) || []).length -1 < 0 ? 0 :  (karma.match(/\+/g) || []).length -1
+    let negCount  = (karma.match(/\-/g) || []).length -1 < 0 ? 0 :  (karma.match(/\-/g) || []).length -1
     let addName   = name[0].replace('@', '')
     let points    = posCount || -1*(negCount)
     console.log("MY POINT IS :"+ points)

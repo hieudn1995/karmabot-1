@@ -86,8 +86,7 @@ app.post("/karma", async function(req, res) {
   } else {
     //If ++ or -- is not mentioned then it is useless to add/delete so simply return the value
     querySongs(addName, 0, undefined, res_url, emoji);
-    console.log("I SHOULDNT BE HERE");
-  }
+   }
 });
 
 app.listen(port, function() {

@@ -15,7 +15,7 @@ require("dotenv").config();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/karma", async function(req, res) {
-  if (req.body.token !== "td1M42T33kFkSfSOK13h78cB") {
+  if (req.body.token !== process.env.TOKEN) {
     return res.status(401).send({ auth: false, message: "No token provided." });
   }
   res.send("_checking_ _karma_..");

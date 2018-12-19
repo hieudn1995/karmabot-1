@@ -1,15 +1,15 @@
 //This is the entry point for the app 
 const express = require("express");
-const  bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const request = require("request");
 const shell = require("shelljs");
-const  moment = require("moment");
+const moment = require("moment");
 const query = require("./mysql");
-const  app = express();
+const app = express();
 const addKarma = require("./karma");
-const  mysql = require("mysql");
-const  port = process.env.PORT || 8069;
-const  axios = require("axios");
+const mysql = require("mysql");
+const port = process.env.PORT || 8069;
+const axios = require("axios");
 require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,10 +69,14 @@ app.post("/karma", async function(req, res) {
     // use async
     async function addKarma() {
       const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-      let result = await querySongs(addName, points, user_name);
-      //let myNewResult = await result
-      await delay(200);
-      await querySongs(addName, 0, user_name, res_url, emoji);
+      //If the name you are adding is the same as your user name, it is illegal
+      if (addName == user_name) {
+        this.karma("thisKarma", "karma_cheater", "illegal_operation", res_url, emoji);
+      } else {
+        let result = await querySongs(addName, points, user_name);
+        await delay(200);
+        await querySongs(addName, 0, user_name, res_url, emoji);
+      }
     }
 
     addKarma();
@@ -80,13 +84,14 @@ app.post("/karma", async function(req, res) {
     // If help is asked, no need to call any other method, or do a calc
     this.karma("thisKarma", "help", "help", res_url, emoji);
   } else if (posCount > 4 || negCount > 4) {
-    // don't let users abuse thi
+    // don't let users abuse this
     this.karma("thisKarma", "not_allowed", "illegal_operation", res_url, emoji);
     console.log("More than 4 points of add or reduce is not allowed!");
   } else {
     //If ++ or -- is not mentioned then it is useless to add/delete so simply return the value
     querySongs(addName, 0, undefined, res_url, emoji);
-   }
+    console.log("I SHOULDNT BE HERE");
+  }
 });
 
 app.listen(port, function() {

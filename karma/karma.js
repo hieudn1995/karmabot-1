@@ -13,7 +13,7 @@ var request    = require('request');
     var sendText = "```--- NOT ALLOWED TO ADD/ DELETE MORE THAN 4 POINTS ---```"
   } 
   else if (await text.indexOf('karma_cheater') >=0){
-    var sendText = "```--- NOT ALLOWED TO ADD/ DELETE YOUR OWN KARMA ---```"
+    var sendText = `${value} tried to adjust his own karma - not allowed :sob:`
   }   
   else if (typeof user_name === 'undefined'){
     var  sendText = text + "'s _total_ _karma_ _points_ _is_ *"+ value + "*"

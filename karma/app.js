@@ -57,7 +57,6 @@ app.post("/karma", async function(req, res) {
     //add/delete points
     console.log("my name is", addName);
     console.log("my point is", points);
-
     if (points > 0 && points <= 2) {
       var emoji = ":thumbsup:";
     } else if (points > 2) {
@@ -65,9 +64,8 @@ app.post("/karma", async function(req, res) {
     } else {
       var emoji = ":thumbsdown:";
     }
-    // Since there are two simultenous DB transactions here,
-    // use async
-    async function addKarma() {
+    // Since there are two simultenous DB transactions here,wait 2 sec 
+      async function addKarma() {
       const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
       //If the name you are adding is the same as your user name, it is illegal
       if (addName == user_name) {
@@ -90,7 +88,6 @@ app.post("/karma", async function(req, res) {
   } else {
     //If ++ or -- is not mentioned then it is useless to add/delete so simply return the value
     querySongs(addName, 0, undefined, res_url, emoji);
-    console.log("I SHOULDNT BE HERE");
   }
 });
 
